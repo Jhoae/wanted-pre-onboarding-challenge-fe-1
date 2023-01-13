@@ -140,3 +140,7 @@ a:active {
   color: inherit;
   background-color: inherit;
 }
+
+body {
+  background-color: #f5f5f5;
+}

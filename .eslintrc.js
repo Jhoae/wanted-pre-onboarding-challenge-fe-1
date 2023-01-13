@@ -41,7 +41,8 @@ module.exports = {
       '@typescript-eslint/consistent-type-definitions': 'off',
       
       "@typescript-eslint/consistent-indexed-object-style":"off",
-      "@@typescript-eslint/strict-boolean-expressions":"off"
+      "@@typescript-eslint/strict-boolean-expressions":"off",
+      "@typescript-eslint/no-misused-promises":"off"
 
     },
     settings: {

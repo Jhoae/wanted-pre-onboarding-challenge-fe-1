@@ -28,9 +28,14 @@ function useForm({ initialValues, onSubmit, validate }: IFormProps): IFormReturn
     setValues({ ...values, [name]: value })
   }
 
+  console.log('submitting', submitting)
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    setSubmitting(true)
     event.preventDefault()
+    setSubmitting(true)
+
+    setErrors(validate(values)) // input value의 타당성 검증 코드 필요
+
     await new Promise(() =>
       setTimeout(() => {
         console.log('서버에 데이터 전송 시도')
@@ -41,17 +46,13 @@ function useForm({ initialValues, onSubmit, validate }: IFormProps): IFormReturn
   }
 
   useEffect(() => {
-    setErrors(validate(values)) // input value의 타당성 검증 코드 필요
-  }, [values])
-
-  useEffect(() => {
     if (submitting) {
       if (Object.keys(errors).length === 0) {
         console.log('에러없음. submit 성공')
         onSubmit(values)
       } else {
         console.log('에러 발견')
-        alert(JSON.stringify(errors))
+        //        alert(JSON.stringify(errors))
       }
       setSubmitting(false)
     }
