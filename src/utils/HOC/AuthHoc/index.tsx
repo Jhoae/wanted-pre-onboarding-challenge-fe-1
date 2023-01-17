@@ -7,7 +7,7 @@ const AuthHoc = (AuthComponent: ComponentType) => {
 
     if (!isAuthority) {
       window.alert('토큰이 존재하지 않습니다.')
-      window.location.href = '/login'
+      window.location.href = '/auth'
       return <></>
     }
 

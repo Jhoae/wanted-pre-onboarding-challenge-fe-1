@@ -10,10 +10,10 @@ interface IFormProps {
   validate: (value: StringType) => StringType
 }
 
-interface IFormReturns {
+export interface IFormReturns {
   values: StringType
   errors: StringType
-  submitting: boolean
+  submitting?: boolean
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>
 }
@@ -28,7 +28,7 @@ function useForm({ initialValues, onSubmit, validate }: IFormProps): IFormReturn
     setValues({ ...values, [name]: value })
   }
 
-  console.log('submitting', submitting)
+  console.log('values', values)
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()

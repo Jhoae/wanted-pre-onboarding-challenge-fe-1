@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { InputProps } from './Input'
+import { InputProps } from './InputFORM'
 
 export const SignInFormTitle = styled.span`
   display: block;

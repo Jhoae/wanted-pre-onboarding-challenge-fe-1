@@ -1,31 +1,35 @@
-import React, { FC, InputHTMLAttributes } from 'react'
-import * as Style from './Input.styles'
+import { StringType } from '../../../hooks/common/useForm'
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  errorMessage?: string
+export interface IInputProps {
+  value?: string
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  // onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  // handleSubmit?: (event: React.FormEvent<HTMLFormElement>) => Promise<void>
+  width?: string | number
+  height?: string | number
+  id?: string
   placeholder?: string
-  title?: string
+  type?: string
+  errors?: StringType
+  errorMessage?: string
 }
 
-const Input: FC<InputProps> = ({
-  width = '17.5rem',
-  title,
-  height,
+export default function InputForm({
+  type = 'text',
+  value,
+  handleChange,
+  id,
   placeholder,
-  errorMessage,
-  ...props
-}) => {
+  width = '340px',
+}: IInputProps) {
   return (
-    <Style.InputLayout width={width} height={height}>
-      <Style.SignInFormTitle>{title}</Style.SignInFormTitle>
-      <Style.InputField placeholder={placeholder} {...props} />
-      <Style.ErrorMessage>{errorMessage}</Style.ErrorMessage>
-      {/*   {errors.email && <span className='errorMessage'>{errors.email}</span>}
-      <br />
-      {errors.password && <span className='errorMessage'>{errors.password}</span>}{' '}
-   */}
-    </Style.InputLayout>
+    <input
+      type={type}
+      value={value}
+      onChange={handleChange}
+      placeholder={placeholder}
+      width={width}
+      id={id}
+    />
   )
 }
-
-export default Input
