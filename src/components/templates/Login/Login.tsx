@@ -1,7 +1,7 @@
 import { IFormReturns } from '../../../hooks/common/useForm'
 import * as Style from './Login.styles'
-import LoginTitle from '../../organisms/Login/LoginTitle/LoginTitle'
-import LoginForm from '../../organisms/Login/LoginFormBox/LoginFormBox'
+import LoginTitle from '../../molecules/LoginTitle/LoginTitle'
+import LoginForm from '../../organisms/Login/ssLoginFormBox/LoginFormBox'
 
 interface LoginTypes extends IFormReturns {
   HeaderText: string

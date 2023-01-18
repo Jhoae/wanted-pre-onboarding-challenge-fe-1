@@ -1,8 +1,29 @@
+import { InputHTMLAttributes } from 'react'
 import styled from 'styled-components'
-import Input from '../../atoms/Input/Input'
-import BlueBox from '../../../components/atoms/BlueBox/BlueBox'
 
-export const LoginColumn = styled.div`
+/// /////////////////////
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  errorMessage?: string
+  placeholder?: string
+  title?: string
+}
+
+export const FormLayout = styled.div<InputProps>`
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 500px;
+  > form > button {
+    margin-top: 50px;
+  }
+`
+export const LoginForm = styled.form`
+  div {
+    margin-top: 30px;
+  }
+`
+
+/* export const LoginColumn = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -25,21 +46,7 @@ export const LoginColumn = styled.div`
     height: 50px;
     padding-top: 50px;
   }
+  
 `
-
 export const LoginHeader = styled.header``
-
-export const LoginForm = styled.form`
-  div {
-    margin-top: 50px;
-  }
-`
-
-export const LoginInput = styled(Input)`
-  margin-top: 30px;
-  height: 60px;
-`
-
-export const LoginBlueBox = styled(BlueBox)`
-  margin-top: 50px;
-`
+ */

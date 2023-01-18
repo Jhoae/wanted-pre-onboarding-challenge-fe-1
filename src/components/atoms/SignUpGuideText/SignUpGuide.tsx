@@ -1,10 +1,11 @@
 import Link from 'next/link'
+import * as Style from './SignUpGuide.style'
 
 export default function SignUpGuide() {
   return (
-    <div>
+    <Style.SignUpGuideText>
       <p>아직 회원이 아니신가요?</p>
-      <Link href='/auth/signUp'>회원가입</Link>
-    </div>
+      <Link href='/auth'>회원가입</Link>
+    </Style.SignUpGuideText>
   )
 }

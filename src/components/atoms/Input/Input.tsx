@@ -1,35 +1,38 @@
-import { StringType } from '../../../hooks/common/useForm'
+import * as Style from './Input.styles'
 
-export interface IInputProps {
-  value?: string
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  // onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-  // handleSubmit?: (event: React.FormEvent<HTMLFormElement>) => Promise<void>
+export interface InputFieldProps {
+  type?: string
+  value: string
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  placeholder?: string
   width?: string | number
   height?: string | number
+  name: string
   id?: string
-  placeholder?: string
-  type?: string
-  errors?: StringType
-  errorMessage?: string
+  //  errors?: StringType
+  //  errorMessage?: string
 }
 
-export default function InputForm({
+export default function InputField({
   type = 'text',
   value,
-  handleChange,
+  onChange,
   id,
   placeholder,
-  width = '340px',
-}: IInputProps) {
+  name,
+  width = '30rem',
+  height = '5rem',
+}: InputFieldProps) {
   return (
-    <input
+    <Style.InputField
       type={type}
       value={value}
-      onChange={handleChange}
+      onChange={onChange}
       placeholder={placeholder}
       width={width}
+      height={height}
       id={id}
+      name={name}
     />
   )
 }

@@ -23,18 +23,4 @@ export const LoginColumn = styled.div`
     height: 50px;
     padding-top: 50px;
   }
-  > div {
-    margin-top: 30px;
-    display: flex;
-    justify-content: right;
-    width: 340px;
-    justify-self: right;
-    > p {
-      color: #adb5bd;
-    }
-    > a {
-      margin-left: 10px;
-      color: blue;
-    }
-  }
 `

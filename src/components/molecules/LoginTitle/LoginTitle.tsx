@@ -1,4 +1,4 @@
-import SignUpGuide from '../../../atoms/SignUpGuideText/SignUpGuide'
+import SignUpGuide from '../../atoms/SignUpGuideText/SignUpGuide'
 import * as Style from './LoginTitle.style'
 import { LoginHeaderProps } from './LoginTitle.style'
 
