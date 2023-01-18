@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import token from '../../api/token'
+import { ACCESS_TOKEN_KEY } from '../../constants/token/token.constant'
 
 export interface StringType {
   [key: string]: string
@@ -13,9 +16,10 @@ interface IFormProps {
 export interface IFormReturns {
   values: StringType
   errors: StringType
-  submitting?: boolean
+  submitting: boolean
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>
+  //  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => Promise<void>
+  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void
 }
 
 function useForm({ initialValues, onSubmit, validate }: IFormProps): IFormReturns {
@@ -28,20 +32,28 @@ function useForm({ initialValues, onSubmit, validate }: IFormProps): IFormReturn
     setValues({ ...values, [name]: value })
   }
 
-  console.log('values', values)
+  //  console.log('values', values)
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    setErrors(validate(values))
+  }, [values])
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setSubmitting(true)
+    setErrors(validate(values))
 
-    setErrors(validate(values)) // input value의 타당성 검증 코드 필요
-
-    await new Promise(() =>
-      setTimeout(() => {
-        console.log('서버에 데이터 전송 시도')
-      }, 1000),
-    )
-
+    setTimeout(() => {
+      console.log('서버에 데이터 전송 시도')
+      setSubmitting(false)
+      if (Object.keys(errors).length === 0) {
+        console.log('시도 성공')
+        //        token.setToken(ACCESS_TOKEN_KEY, token)
+        window.location.href = '/'
+      } else {
+        console.log('시도 실패')
+      }
+    }, 1000)
     // Promise 대신, 서버에 전송하는 코드 필요 : axios.post(values ...)
   }
 
@@ -54,7 +66,6 @@ function useForm({ initialValues, onSubmit, validate }: IFormProps): IFormReturn
         console.log('에러 발견')
         //        alert(JSON.stringify(errors))
       }
-      setSubmitting(false)
     }
   }, [submitting, errors])
 

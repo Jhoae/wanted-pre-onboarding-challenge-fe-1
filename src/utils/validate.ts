@@ -4,7 +4,6 @@ export default function validate(values: StringType): StringType {
   const errors: StringType = {}
   const emailRule =
     /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i
-
   if (values.email === '') {
     errors.email = '이메일이 입력되지 않았습니다.'
   }

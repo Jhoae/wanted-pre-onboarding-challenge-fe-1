@@ -5,9 +5,10 @@ const AuthHoc = (AuthComponent: ComponentType) => {
   const AuthCheck = () => {
     const { isAuthority } = useTokenCheck()
 
+    // if (isAuthority) {
     if (!isAuthority) {
-      window.alert('토큰이 존재하지 않습니다.')
-      window.location.href = '/auth'
+      window.alert('로그인이 필요합니다.')
+      window.location.href = '/auth/login'
       return <></>
     }
 

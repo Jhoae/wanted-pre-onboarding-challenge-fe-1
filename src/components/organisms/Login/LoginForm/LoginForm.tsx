@@ -1,21 +1,12 @@
 import * as Style from './LoginForm.style'
 import useForm from '../../../../hooks/common/useForm'
-import BlueBox from '../../../atoms/BlueBox/BlueBox'
+import BlueButton from '../../../atoms/BlueButton/BlueButton'
 import InputFrame from '../../../molecules/InputFrame/InputFrame'
 import validate from '../../../../utils/validate'
-
-// interface LoginFormProps {
-//   values: StringType
-//   errors: StringType
-//   errorMessage: string
-//   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-//   handleSubmit?: (event: React.FormEvent<HTMLFormElement>) => Promise<void>
-//   width?: string | number
-//   height?: string | number
-// }
+import { useState } from 'react'
 
 export default function LoginForm() {
-  const { values, errors, handleChange, handleSubmit } = useForm({
+  const { values, errors, handleChange, handleSubmit, submitting } = useForm({
     initialValues: {
       email: '',
       password: '',
@@ -23,6 +14,11 @@ export default function LoginForm() {
     onSubmit: () => {},
     validate,
   })
+
+  const [count, setCount] = useState(0)
+  const onClick = () => {
+    setCount((prev) => prev + 1)
+  }
 
   return (
     <Style.FormLayout>
@@ -43,7 +39,14 @@ export default function LoginForm() {
           errorMessage={errors.password}
           name='password'
         />
-        <BlueBox type='submit' width='340px' height='70px' title='로그인' />
+        <BlueButton
+          type='submit'
+          width='340px'
+          height='70px'
+          title='로그인'
+          onClick={onClick}
+          disabled={submitting}
+        />
       </Style.LoginForm>
     </Style.FormLayout>
   )

@@ -13,8 +13,6 @@ const useTokenCheck = () => {
     }
   }, [])
 
-  console.log('isAuthority', isAuthority)
-
   return { isAuthority }
 }
 

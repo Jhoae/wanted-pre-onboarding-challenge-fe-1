@@ -1,14 +1,15 @@
-import LoginForm from '../components/organisms/Login/LoginForm/LoginForm'
-import LoginTitle from '../components/molecules/LoginTitle/LoginTitle'
-import * as Style from './Login.styles'
+import AuthHoc from '../utils/HOC/AuthHoc'
 
-export default function Login() {
+function Home() {
+  return <div>auth</div>
+}
+
+export default function Auth() {
+  const AuthHomepage = AuthHoc(Home)
+
   return (
     <>
-      <Style.LoginColumn>
-        <LoginTitle HeaderText={`원티드 프리온보딩 챌린지 Toda App 사전 과제`} />
-        <LoginForm />
-      </Style.LoginColumn>
+      <AuthHomepage />
     </>
   )
 }

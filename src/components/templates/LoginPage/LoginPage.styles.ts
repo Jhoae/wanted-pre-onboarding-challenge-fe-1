@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import Input from '../../atoms/Input/Input'
-import BlueBox from '../../../components/atoms/BlueBox/BlueBox'
+import BlueBox from '../../atoms/BlueButton/BlueButton'
 
 export const LoginColumn = styled.div`
   position: absolute;
