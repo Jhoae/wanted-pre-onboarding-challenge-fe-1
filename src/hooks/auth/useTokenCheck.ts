@@ -1,19 +1,19 @@
-import { useEffect, useState } from 'react'
-import { ACCESS_TOKEN_KEY } from '../../constants/token/token.constant'
-import token from '../../api/token'
+import { useEffect, useState } from 'react';
+import { ACCESS_TOKEN_KEY } from '../../constants/token/token.constant';
+import token from '../../api/token';
 
 const useTokenCheck = () => {
-  const [isAuthority, setIsAuthority] = useState(true)
+  const [isAuthority, setIsAuthority] = useState(false);
 
   useEffect(() => {
     if (token.getToken(ACCESS_TOKEN_KEY) === null) {
-      setIsAuthority(false)
+      setIsAuthority(false);
     } else {
-      setIsAuthority(true)
+      setIsAuthority(true);
     }
-  }, [])
+  }, []);
 
-  return { isAuthority }
-}
+  return { isAuthority };
+};
 
-export default useTokenCheck
+export default useTokenCheck;

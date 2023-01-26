@@ -1,24 +1,40 @@
-import * as Style from './LoginForm.style'
-import useForm from '../../../../hooks/common/useForm'
-import BlueButton from '../../../atoms/BlueButton/BlueButton'
-import InputFrame from '../../../molecules/InputFrame/InputFrame'
-import validate from '../../../../utils/validate'
-import { useState } from 'react'
+import * as Style from './LoginForm.style';
+import useForm from '../../../../hooks/common/useForm';
+import BlueButton from '../../../atoms/BlueButton/BlueButton';
+import InputFrame from '../../../molecules/InputFrame/InputFrame';
+import validate from '../../../../utils/validate';
+import axios from 'axios';
+import token from '../../../../api/token';
+import { ACCESS_TOKEN_KEY } from '../../../../constants/token/token.constant';
+import Router from 'next/router';
 
 export default function LoginForm() {
+  const axiosLoginPost = (values: any) => {
+    axios
+      .post('http://localhost:8080/users/login', {
+        email: values.email,
+        password: values.password,
+      })
+      .then((response) => {
+        console.log('response', response);
+        token.setToken(ACCESS_TOKEN_KEY, response.data.token);
+        alert(response.data.message);
+        Router.push('/');
+      })
+      .catch((err) => {
+        console.error('err', err);
+        alert(err);
+      });
+  };
+
   const { values, errors, handleChange, handleSubmit, submitting } = useForm({
     initialValues: {
       email: '',
       password: '',
     },
-    onSubmit: () => {},
+    onSubmit: axiosLoginPost,
     validate,
-  })
-
-  const [count, setCount] = useState(0)
-  const onClick = () => {
-    setCount((prev) => prev + 1)
-  }
+  });
 
   return (
     <Style.FormLayout>
@@ -44,10 +60,9 @@ export default function LoginForm() {
           width='340px'
           height='70px'
           title='로그인'
-          onClick={onClick}
           disabled={submitting}
         />
       </Style.LoginForm>
     </Style.FormLayout>
-  )
+  );
 }
