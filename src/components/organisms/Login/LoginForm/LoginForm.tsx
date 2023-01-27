@@ -16,9 +16,8 @@ export default function LoginForm() {
         password: values.password,
       })
       .then((response) => {
-        console.log('response', response);
+        console.log('response', response.data.token);
         token.setToken(ACCESS_TOKEN_KEY, response.data.token);
-        alert(response.data.message);
         Router.push('/');
       })
       .catch((err) => {

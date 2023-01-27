@@ -1,17 +1,20 @@
 import { ComponentType, useEffect } from 'react';
 import useTokenCheck from '../../../hooks/auth/useTokenCheck';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 
 const AuthHoc = (AuthComponent: ComponentType) => {
   const AuthCheck = () => {
     const { isAuthority } = useTokenCheck();
+    const router = useRouter();
 
     useEffect(() => {
       if (!isAuthority) {
-        //      window.alert('로그인이 필요합니다.');
-        Router.replace('/auth/login');
+        router.push('/auth/login');
       }
-    }, []);
+    }, [isAuthority]);
+    if (!isAuthority) {
+      return <></>;
+    }
 
     return <AuthComponent />;
   };

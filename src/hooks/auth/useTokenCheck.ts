@@ -3,7 +3,7 @@ import { ACCESS_TOKEN_KEY } from '../../constants/token/token.constant';
 import token from '../../api/token';
 
 const useTokenCheck = () => {
-  const [isAuthority, setIsAuthority] = useState(false);
+  const [isAuthority, setIsAuthority] = useState(true);
 
   useEffect(() => {
     if (token.getToken(ACCESS_TOKEN_KEY) === null) {
