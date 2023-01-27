@@ -1,12 +1,13 @@
 import * as Style from './LoginForm.style';
-import useForm from '../../../../hooks/common/useForm';
-import BlueButton from '../../../atoms/BlueButton/BlueButton';
-import InputFrame from '../../../molecules/InputFrame/InputFrame';
-import validate from '../../../../utils/validate';
+import useForm from '../../../hooks/common/useForm';
+import BlueButton from '../../atoms/BlueButton/BlueButton';
+import InputFrame from '../../molecules/InputFrame/InputFrame';
+import validate from '../../../utils/validate';
 import axios from 'axios';
-import token from '../../../../api/token';
-import { ACCESS_TOKEN_KEY } from '../../../../constants/token/token.constant';
+import token from '../../../api/token';
+import { ACCESS_TOKEN_KEY } from '../../../constants/token/token.constant';
 import Router from 'next/router';
+import { useState } from 'react';
 
 export default function LoginForm() {
   const axiosLoginPost = (values: any) => {

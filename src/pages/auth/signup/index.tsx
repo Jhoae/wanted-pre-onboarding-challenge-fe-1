@@ -1,4 +1,4 @@
-import LoginPage from '../../../components/templates/LoginPage/LoginPage';
+import SignUpPage from '../../../components/templates/SignUp';
 
 export default function Login() {
   //  const { isAuthority } = useTokenCheck();
@@ -6,5 +6,5 @@ export default function Login() {
   // 로그인 o-> 홈페이지 , 로그인 x -> 로그인페이지
   //  return <>{isAuthority ? <Homepage /> : <LoginPage />}</>;
 
-  return <LoginPage />;
+  return <SignUpPage />;
 }

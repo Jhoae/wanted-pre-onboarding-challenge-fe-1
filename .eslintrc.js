@@ -21,7 +21,7 @@ module.exports = {
         'no-undef': 'off',
       },
       parserOptions: {
-        project: './tsconfig.json',
+        // project: './tsconfig.json',
         tsconfigRootDir: __dirname,
         sourceType: 'module',
       },
