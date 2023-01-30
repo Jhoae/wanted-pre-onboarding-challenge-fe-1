@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { BlueBoxProps } from './BlueButton'
+import styled from 'styled-components';
+import { BlueBoxProps } from './BlueButton';
 
 export const BlueBox = styled.button<BlueBoxProps>`
   background: #2962ff;
@@ -7,7 +7,7 @@ export const BlueBox = styled.button<BlueBoxProps>`
 
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  color: ${(props) => (props.disabled ? 'red' : 'black')};
+  color: ${(props) => (props.disabled ? '#495057' : 'black')};
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 500;
@@ -15,4 +15,4 @@ export const BlueBox = styled.button<BlueBoxProps>`
   line-height: 29px;
   text-align: center;
   //#ffffff;
-`
+`;

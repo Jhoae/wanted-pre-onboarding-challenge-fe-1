@@ -8,11 +8,12 @@ const AuthHoc = (AuthComponent: ComponentType) => {
     const router = useRouter();
 
     useEffect(() => {
-      if (!isAuthority) {
+      if (isAuthority === false) {
+        alert('로그인이 필요합니다.');
         router.push('/auth/login');
       }
     }, [isAuthority]);
-    if (!isAuthority) {
+    if (isAuthority === false) {
       return <></>;
     }
 

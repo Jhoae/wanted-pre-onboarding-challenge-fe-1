@@ -6,9 +6,10 @@ import validate from '../../../utils/validate';
 import axios from 'axios';
 import token from '../../../api/token';
 import { ACCESS_TOKEN_KEY } from '../../../constants/token/token.constant';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 
 export default function SignUpForm() {
+  const router = useRouter();
   const axiosSignUpPost = (values: any) => {
     axios
       .post('http://localhost:8080/users/create', {
@@ -19,7 +20,7 @@ export default function SignUpForm() {
         console.log('회원가입 성공');
         console.log('response', response.data.token);
         token.setToken(ACCESS_TOKEN_KEY, response.data.token);
-        Router.push('/');
+        router.push('/');
       })
       .catch((err) => {
         console.error('err', err);
@@ -66,7 +67,7 @@ export default function SignUpForm() {
           name='password'
         />
         <InputFrame
-          type='passwordConfirmed'
+          type='password'
           value={values.passwordConfirmed}
           onChange={handleChange}
           placeholder='비밀번호확인'

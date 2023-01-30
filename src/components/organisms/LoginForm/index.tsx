@@ -6,10 +6,11 @@ import validate from '../../../utils/validate';
 import axios from 'axios';
 import token from '../../../api/token';
 import { ACCESS_TOKEN_KEY } from '../../../constants/token/token.constant';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 import { useState } from 'react';
 
 export default function LoginForm() {
+  const router = useRouter();
   const axiosLoginPost = (values: any) => {
     axios
       .post('http://localhost:8080/users/login', {
@@ -19,7 +20,7 @@ export default function LoginForm() {
       .then((response) => {
         console.log('response', response.data.token);
         token.setToken(ACCESS_TOKEN_KEY, response.data.token);
-        Router.push('/');
+        router.push('/');
       })
       .catch((err) => {
         console.error('err', err);
