@@ -2,6 +2,8 @@ import useTokenCheck from '../hooks/auth/useTokenCheck';
 import AuthHoc from '../utils/HOC/AuthHoc';
 import token from '../api/token';
 import { useRouter } from 'next/router';
+import * as Style from './index.styles';
+import TodoCreate from '../components/organisms/TodoCreate';
 
 export default function Homepage() {
   const { isAuthority } = useTokenCheck();
@@ -13,6 +15,10 @@ export default function Homepage() {
           <>
             <div>isAuthority: {isAuthority ? 'true' : 'false'}</div>
             <button onClick={onClick}>로그아웃</button>
+
+            <Style.HomeColumn>
+              <TodoCreate />
+            </Style.HomeColumn>
           </>
         ) : null}
       </>

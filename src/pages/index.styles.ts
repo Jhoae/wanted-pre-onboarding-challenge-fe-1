@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-import Input from '../../atoms/Input/Input';
-import BlueBox from '../../atoms/BlueButton/BlueButton';
 
-export const LoginColumn = styled.div`
+export const HomeColumn = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -23,23 +21,6 @@ export const LoginColumn = styled.div`
     font-family: 'Noto Sans KR';
     width: 300px;
     height: 50px;
-    padding-top: 50px;
+    padding-top: 30px;
   }
-`;
-
-export const LoginHeader = styled.header``;
-
-export const LoginForm = styled.form`
-  div {
-    margin-top: 50px;
-  }
-`;
-
-export const LoginInput = styled(Input)`
-  margin-top: 30px;
-  height: 60px;
-`;
-
-export const LoginBlueBox = styled(BlueBox)`
-  margin-top: 50px;
 `;

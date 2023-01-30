@@ -18,6 +18,7 @@ export default function validate(values: StringType): StringType {
     errors.password = '8자 이상의 패스워드를 사용해야 합니다.';
   }
 
+  // input창이 2개 === 로그인페이지 or TodoCreatePage
   // input창이 3개이상 === 회원가입 페이지
   if (Object.keys(values).length > 2 && values.nickname === '') {
     errors.nickname = '닉네임이 입력되지 않았습니다.';

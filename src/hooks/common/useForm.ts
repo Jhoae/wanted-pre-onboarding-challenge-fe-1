@@ -36,8 +36,6 @@ function useForm({ initialValues, onSubmit, validate }: IFormProps): IFormReturn
     }
   }, [values]);
 
-  console.log('values', values);
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitting(true);
