@@ -1,7 +1,10 @@
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import TodoColumn from '../../components/molecules/TodoColumn';
-import TodoList from '../../components/organisms/TodoList';
-// import * as Style from './styles';
+import TodoCreate from '../../components/organisms/TodoCreate';
+import TodoList, { IToDos } from '../../components/organisms/TodoList';
+import useGetTodos from '../../hooks/todo/useGetTodos';
+import * as Style from '../index.styles';
 
 interface ItoDos {
   data: {
@@ -13,15 +16,22 @@ interface ItoDos {
   }[];
 }
 
-export default function TodoDetail({ data }: ItoDos) {
+export default function TodoDetail() {
+  const [toDos, setToDos] = useState<IToDos[]>([]);
+
+  useEffect(() => {
+    useGetTodos(setToDos);
+  }, []);
+
   const router = useRouter();
   const { id } = router.query;
 
-  console.log('다이나믹id');
-  console.log(id);
   return (
     <>
-      <TodoList onFocusId={id} />
+      <Style.HomeColumn>
+        <TodoList onFocusId={id} toDos={toDos} />
+        <TodoCreate />
+      </Style.HomeColumn>
     </>
   );
 }

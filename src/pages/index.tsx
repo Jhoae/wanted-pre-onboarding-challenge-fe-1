@@ -4,13 +4,19 @@ import token from '../api/token';
 import { useRouter } from 'next/router';
 import * as Style from './index.styles';
 import TodoCreate from '../components/organisms/TodoCreate';
-import TodoList from '../components/organisms/TodoList';
-import { useEffect } from 'react';
+import TodoList, { IToDos } from '../components/organisms/TodoList';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ACCESS_TOKEN_KEY } from '../constants/token/token.constant';
+import useGetTodos from '../hooks/todo/useGetTodos';
 
 export default function Homepage() {
   const { isAuthority } = useTokenCheck();
+  const [toDos, setToDos] = useState<IToDos[]>([]);
+
+  useEffect(() => {
+    useGetTodos(setToDos);
+  }, []);
 
   const Home = () => {
     return (
@@ -21,7 +27,7 @@ export default function Homepage() {
             <button onClick={onClick}>로그아웃</button> */}
 
             <Style.HomeColumn>
-              <TodoList />
+              <TodoList toDos={toDos} />
               <TodoCreate />
             </Style.HomeColumn>
           </>
