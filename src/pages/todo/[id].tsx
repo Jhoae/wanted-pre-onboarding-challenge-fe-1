@@ -14,7 +14,7 @@ interface ItoDos {
 export default function TodoDetail({ data }: ItoDos) {
   return (
     <>
-      <TodoColumn data={data} />
+      <TodoColumn />
     </>
   );
 }

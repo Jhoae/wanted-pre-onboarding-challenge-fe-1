@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import token from '../../../api/token';
 import { ACCESS_TOKEN_KEY } from '../../../constants/token/token.constant';
+import useGetTodos from '../../../hooks/todo/useGetTodos';
 import TodoColumn from '../../molecules/TodoColumn';
 
 export interface IToDos {
@@ -16,20 +17,7 @@ export default function TodoList() {
   const [toDos, setToDos] = useState<IToDos[]>([]);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:8080/todos', {
-        headers: {
-          Authorization: token.getToken(ACCESS_TOKEN_KEY),
-        },
-      })
-      .then((response) => {
-        console.log('response.data', response.data.data);
-        setToDos(response.data.data);
-      })
-      .catch((err) => {
-        console.error('err', err);
-        alert(err);
-      });
+    useGetTodos(setToDos);
   }, []);
 
   return <TodoColumn toDos={toDos}></TodoColumn>;
