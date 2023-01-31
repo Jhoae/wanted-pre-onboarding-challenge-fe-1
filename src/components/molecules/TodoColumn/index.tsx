@@ -1,20 +1,19 @@
 import ContentBox from '../../atoms/ContentBox';
+import { IToDos } from '../../organisms/TodoList';
 import * as Style from './TodoColumn.styles';
 
 interface TodoColumnProps {
-  toDos: { id: number; text: string; title: string }[];
-  onFocusId: number;
+  toDos?: IToDos[];
+  onFocusId?: string;
 }
 
 export default function TodoColumn({ toDos, onFocusId }: TodoColumnProps) {
-  console.log('onFocusId', onFocusId);
-  console.log('toDos', toDos);
   return (
     <>
       {toDos?.map((toDo) => (
         <Style.TodoBox>
           <Style.TitleHeader>{toDo.title}</Style.TitleHeader>
-          {onFocusId === toDo.id && <ContentBox content={toDo.text} key={toDo.id} />}
+          {onFocusId === toDo.id && <ContentBox content={toDo.content} key={toDo.id} />}
         </Style.TodoBox>
       ))}
     </>

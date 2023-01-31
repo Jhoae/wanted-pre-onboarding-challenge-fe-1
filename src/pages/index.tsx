@@ -5,6 +5,9 @@ import { useRouter } from 'next/router';
 import * as Style from './index.styles';
 import TodoCreate from '../components/organisms/TodoCreate';
 import TodoList from '../components/organisms/TodoList';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { ACCESS_TOKEN_KEY } from '../constants/token/token.constant';
 
 export default function Homepage() {
   const { isAuthority } = useTokenCheck();
@@ -14,8 +17,8 @@ export default function Homepage() {
       <>
         {isAuthority ? (
           <>
-            <div>isAuthority: {isAuthority ? 'true' : 'false'}</div>
-            <button onClick={onClick}>로그아웃</button>
+            {/*  <div>isAuthority: {isAuthority ? 'true' : 'false'}</div>
+            <button onClick={onClick}>로그아웃</button> */}
 
             <Style.HomeColumn>
               <TodoList />

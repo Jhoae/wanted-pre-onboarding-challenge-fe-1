@@ -9,19 +9,17 @@ import * as Style from './TodoCreateForm.styles';
 import React, { useState } from 'react';
 
 interface TodoCreateFormProps {
-  open?: boolean;
+  //  open?: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function TodoCreateForm({ open, setOpen }: TodoCreateFormProps) {
+export default function TodoCreateForm({ setOpen }: TodoCreateFormProps) {
   const router = useRouter();
 
   console.log(' token.getToken(ACCESS_TOKEN_KEY)', token);
 
   const onSubmit = () => {
-    // 새로고침방지
-    //    e.preventDefault();
-    setOpen((prev: any) => !prev);
+    setOpen(false);
     axios
       .post(
         'http://localhost:8080/todos',
@@ -37,20 +35,13 @@ export default function TodoCreateForm({ open, setOpen }: TodoCreateFormProps) {
       )
       .then((response) => {
         console.log('response.data', response.data.data);
+        alert('등록되었습니다');
+        router.reload();
       })
       .catch((err) => {
         console.error('err', err);
         alert(err);
       });
-    /*     dispatch({
-      type: 'CREATE',
-      todo: {
-        id: nextId.current,
-        text: value,
-        done: false,
-      },
-    });
- */ // 제출하고 난뒤
   };
 
   const { values, errors, handleChange, handleSubmit, submitting } = useForm({
@@ -61,10 +52,6 @@ export default function TodoCreateForm({ open, setOpen }: TodoCreateFormProps) {
     onSubmit: onSubmit,
     validate: CreateTodoValidate,
   });
-
-  console.log('values', values);
-  console.log('values.title', values.title);
-  console.log('values.content', values.content);
 
   return (
     <Style.FormLayout>
@@ -85,7 +72,7 @@ export default function TodoCreateForm({ open, setOpen }: TodoCreateFormProps) {
           errorMessage={errors.content}
           name='content'
         />
-        <button type='submit'></button>
+        <button type='submit' disabled={submitting}></button>
       </Style.TodoCreateForm>
     </Style.FormLayout>
   );

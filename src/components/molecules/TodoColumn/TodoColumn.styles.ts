@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const TitleHeader = styled.header`
   font-size: 17px;
   font-weight: bold;
-  padding-top: 10px;
+  padding: 10px 0px;
 `;
 
 export const TodoBox = styled.div`
