@@ -11,4 +11,9 @@ export const TodoBox = styled.div`
   margin: 20px 10px;
   background-color: #e9ecef;
   border-radius: 10px;
+
+  &:hover {
+    background-color: #dee2e6;
+    cursor: pointer;
+  }
 `;

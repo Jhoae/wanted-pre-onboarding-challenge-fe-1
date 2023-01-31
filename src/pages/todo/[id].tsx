@@ -1,4 +1,6 @@
+import { useRouter } from 'next/router';
 import TodoColumn from '../../components/molecules/TodoColumn';
+import TodoList from '../../components/organisms/TodoList';
 // import * as Style from './styles';
 
 interface ItoDos {
@@ -12,9 +14,14 @@ interface ItoDos {
 }
 
 export default function TodoDetail({ data }: ItoDos) {
+  const router = useRouter();
+  const { id } = router.query;
+
+  console.log('다이나믹id');
+  console.log(id);
   return (
     <>
-      <TodoColumn />
+      <TodoList onFocusId={id} />
     </>
   );
 }

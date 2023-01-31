@@ -13,12 +13,16 @@ export interface IToDos {
   updatedAt: string;
 }
 
-export default function TodoList() {
+export interface ITodoList {
+  onFocusId: string | string[] | undefined;
+}
+
+export default function TodoList({ onFocusId }: ITodoList) {
   const [toDos, setToDos] = useState<IToDos[]>([]);
 
   useEffect(() => {
     useGetTodos(setToDos);
   }, []);
 
-  return <TodoColumn toDos={toDos}></TodoColumn>;
+  return <TodoColumn onFocusId={onFocusId} toDos={toDos}></TodoColumn>;
 }
