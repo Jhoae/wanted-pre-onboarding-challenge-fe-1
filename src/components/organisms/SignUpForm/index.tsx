@@ -2,7 +2,7 @@ import * as Style from './styles';
 import useForm from '../../../hooks/common/useForm';
 import BlueButton from '../../atoms/BlueButton/BlueButton';
 import InputFrame from '../../molecules/InputFrame/InputFrame';
-import validate from '../../../utils/validate';
+import validate from '../../../utils/vaildate.ts/AuthValidate';
 import axios from 'axios';
 import token from '../../../api/token';
 import { ACCESS_TOKEN_KEY } from '../../../constants/token/token.constant';

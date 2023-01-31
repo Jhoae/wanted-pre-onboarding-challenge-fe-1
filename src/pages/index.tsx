@@ -4,6 +4,7 @@ import token from '../api/token';
 import { useRouter } from 'next/router';
 import * as Style from './index.styles';
 import TodoCreate from '../components/organisms/TodoCreate';
+import TodoList from '../components/organisms/TodoList';
 
 export default function Homepage() {
   const { isAuthority } = useTokenCheck();
@@ -17,6 +18,7 @@ export default function Homepage() {
             <button onClick={onClick}>로그아웃</button>
 
             <Style.HomeColumn>
+              <TodoList />
               <TodoCreate />
             </Style.HomeColumn>
           </>

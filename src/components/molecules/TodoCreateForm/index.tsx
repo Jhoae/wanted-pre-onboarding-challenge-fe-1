@@ -1,7 +1,6 @@
 import useForm from '../../../hooks/common/useForm';
 import InputFrame from '../../molecules/InputFrame/InputFrame';
-import CreateTodoValidate from '../../../utils/CreateTodoValidate';
-import validate from '../../../utils/validate';
+import CreateTodoValidate from '../../../utils/vaildate.ts/CreateTodoValidate';
 import axios from 'axios';
 import token from '../../../api/token';
 import { ACCESS_TOKEN_KEY } from '../../../constants/token/token.constant';
