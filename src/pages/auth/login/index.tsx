@@ -8,8 +8,6 @@ export default function Login() {
   const { isAuthority } = useTokenCheck();
   const router = useRouter();
 
-  console.log('isAuthority', isAuthority);
-
   if (isAuthority) {
     router.push('/');
     return <></>;

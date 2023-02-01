@@ -1,4 +1,10 @@
+import axios from 'axios';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+import token from '../../../api/token';
+import { ACCESS_TOKEN_KEY } from '../../../constants/token/token.constant';
+import { toDoState } from '../../../recoil/atoms';
 import ContentBox from '../../atoms/ContentBox';
 import { IToDos } from '../../organisms/TodoList';
 import * as Style from './TodoColumn.styles';
@@ -11,20 +17,36 @@ interface TodoColumnProps {
 export default function TodoColumn({ toDos, onFocusId }: TodoColumnProps) {
   const router = useRouter();
 
-  const showDetail = (focusId: string) => {
-    //  console.log('showDetail', focusId);
-    //  console.log('move to', `/todo/${focusId}`);
+  const showTodoContent = (focusId: string) => {
     router.push(`/todo/${focusId}`);
   };
+  const DeleteTodo = (DeleteId: string) => {
+    axios
+      .delete(`http://localhost:8080/todos/${DeleteId}`, {
+        headers: {
+          Authorization: token.getToken(ACCESS_TOKEN_KEY),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        router.push('/');
+      })
+      .catch((err) => console.error(err));
+  };
 
-  console.log('onFocusId', onFocusId);
-  console.log('toDos', toDos);
   return (
     <>
       {toDos?.map((toDo) => (
-        <Style.TodoBox onClick={() => showDetail(toDo.id)}>
-          <Style.TitleHeader>{toDo.title}</Style.TitleHeader>
-          {onFocusId === toDo.id && <ContentBox content={toDo.content} key={toDo.id} />}
+        <Style.TodoBox key={toDo.id} onClick={() => showTodoContent(toDo.id)}>
+          <Style.TitleHeader>
+            {toDo.title}
+            {onFocusId === toDo.id && (
+              <Style.DeleteButton type='button' onClick={() => DeleteTodo(toDo.id)}>
+                X
+              </Style.DeleteButton>
+            )}
+          </Style.TitleHeader>
+          {onFocusId === toDo.id && <ContentBox key={toDo.id} content={toDo.content} />}
         </Style.TodoBox>
       ))}
     </>

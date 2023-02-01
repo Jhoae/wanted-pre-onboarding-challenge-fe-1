@@ -24,7 +24,6 @@ export default function LoginForm() {
       })
       .catch((err) => {
         console.error('err', err);
-        alert(err);
       });
   };
 

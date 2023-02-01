@@ -1,27 +1,19 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
 import TodoColumn from '../../components/molecules/TodoColumn';
 import TodoCreate from '../../components/organisms/TodoCreate';
 import TodoList, { IToDos } from '../../components/organisms/TodoList';
 import useGetTodos from '../../hooks/todo/useGetTodos';
+import { toDoState } from '../../recoil/atoms';
 import * as Style from '../index.styles';
 
-interface ItoDos {
-  data: {
-    title: string;
-    content: string;
-    id: string;
-    createdAt: string;
-    updatedAt: string;
-  }[];
-}
-
 export default function TodoDetail() {
-  const [toDos, setToDos] = useState<IToDos[]>([]);
+  const [toDos, setToDos] = useRecoilState<IToDos[]>(toDoState);
 
   useEffect(() => {
     useGetTodos(setToDos);
-  }, []);
+  }, [toDos]);
 
   const router = useRouter();
   const { id } = router.query;

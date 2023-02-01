@@ -1,4 +1,6 @@
+import React from 'react';
 import axios from 'axios';
+import { SetterOrUpdater } from 'recoil';
 import token from '../../api/token';
 import { IToDos } from '../../components/organisms/TodoList';
 import { ACCESS_TOKEN_KEY } from '../../constants/token/token.constant';
@@ -11,11 +13,10 @@ export default function useGetTodos(setToDos: React.Dispatch<React.SetStateActio
       },
     })
     .then((response) => {
-      console.log('response.data', response.data.data);
       setToDos(response.data.data);
     })
     .catch((err) => {
       console.error('err', err);
-      alert(err);
+      //      alert('오류 : 할 일 목록을 불러오는데 실패했습니다.');
     });
 }

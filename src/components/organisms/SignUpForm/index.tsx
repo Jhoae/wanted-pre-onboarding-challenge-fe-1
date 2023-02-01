@@ -24,7 +24,7 @@ export default function SignUpForm() {
       })
       .catch((err) => {
         console.error('err', err);
-        alert(err);
+        alert('오류 : 회원가입에 실패했습니다.');
       });
   };
 

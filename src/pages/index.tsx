@@ -6,17 +6,15 @@ import * as Style from './index.styles';
 import TodoCreate from '../components/organisms/TodoCreate';
 import TodoList, { IToDos } from '../components/organisms/TodoList';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { ACCESS_TOKEN_KEY } from '../constants/token/token.constant';
 import useGetTodos from '../hooks/todo/useGetTodos';
+import { useRecoilState } from 'recoil';
+import { toDoState } from '../recoil/atoms';
 
 export default function Homepage() {
-  const { isAuthority } = useTokenCheck();
-  const [toDos, setToDos] = useState<IToDos[]>([]);
+  const [toDos, setToDos] = useRecoilState<IToDos[]>(toDoState);
 
-  useEffect(() => {
-    useGetTodos(setToDos);
-  }, []);
+  const { isAuthority } = useTokenCheck();
+  //  const [toDos, setToDos] = useState<IToDos[]>([]);
 
   const Home = () => {
     return (
@@ -39,7 +37,7 @@ export default function Homepage() {
 
   const router = useRouter();
 
-  const onClick = () => {
+  const logout = () => {
     token.clearToken();
     router.push('/auth/login');
   };

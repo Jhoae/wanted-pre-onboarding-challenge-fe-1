@@ -62,7 +62,6 @@ function useForm({ initialValues, onSubmit, validate }: IFormProps): IFormReturn
         onSubmit(values);
       } else {
         console.log('에러 발견');
-        //        alert(JSON.stringify(errors))
       }
     }
   }, [submitting, errors]);

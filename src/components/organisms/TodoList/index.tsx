@@ -1,8 +1,4 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import token from '../../../api/token';
-import { ACCESS_TOKEN_KEY } from '../../../constants/token/token.constant';
-import useGetTodos from '../../../hooks/todo/useGetTodos';
+import React from 'react';
 import TodoColumn from '../../molecules/TodoColumn';
 
 export interface IToDos {
