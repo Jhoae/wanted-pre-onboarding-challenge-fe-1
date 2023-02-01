@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import useGetTodos from '../hooks/todo/useGetTodos';
 import { useRecoilState } from 'recoil';
 import { toDoState } from '../recoil/atoms';
+import LogoutButton from '../components/atoms/LogoutButton';
 
 export default function Homepage() {
   const [toDos, setToDos] = useRecoilState<IToDos[]>(toDoState);
@@ -21,10 +22,8 @@ export default function Homepage() {
       <>
         {isAuthority ? (
           <>
-            {/*  <div>isAuthority: {isAuthority ? 'true' : 'false'}</div>
-            <button onClick={onClick}>로그아웃</button> */}
-
             <Style.HomeColumn>
+              <LogoutButton />
               <TodoList toDos={toDos} />
               <TodoCreate />
             </Style.HomeColumn>
@@ -34,13 +33,6 @@ export default function Homepage() {
     );
   };
   const AuthHomepage = AuthHoc(Home);
-
-  const router = useRouter();
-
-  const logout = () => {
-    token.clearToken();
-    router.push('/auth/login');
-  };
 
   return (
     <>
