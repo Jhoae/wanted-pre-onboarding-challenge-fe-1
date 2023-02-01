@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import TodoColumn from '../../components/molecules/TodoColumn';
+import TodoColumn from '../../components/organisms/TodoColumn';
 import TodoCreate from '../../components/organisms/TodoCreate';
 import TodoList, { IToDos } from '../../components/organisms/TodoList';
 import useGetTodos from '../../hooks/todo/useGetTodos';

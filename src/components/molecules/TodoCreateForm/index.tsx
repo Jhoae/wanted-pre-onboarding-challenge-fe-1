@@ -7,7 +7,6 @@ import useCreateTodo from '../../../hooks/todo/useCreateTodo';
 import { useRecoilState } from 'recoil';
 import { IToDos } from '../../organisms/TodoList';
 import { toDoState } from '../../../recoil/atoms';
-import useGetTodos from '../../../hooks/todo/useGetTodos';
 
 interface TodoCreateFormProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -36,7 +35,7 @@ export default function TodoCreateForm({ setOpen }: TodoCreateFormProps) {
 
   return (
     <Style.FormLayout>
-      <Style.TodoCreateForm onSubmit={handleSubmit}>
+      <Style.CreateTodoForm onSubmit={handleSubmit}>
         <InputFrame
           type='text'
           value={values.title}
@@ -54,7 +53,7 @@ export default function TodoCreateForm({ setOpen }: TodoCreateFormProps) {
           name='content'
         />
         <button type='submit' disabled={submitting}></button>
-      </Style.TodoCreateForm>
+      </Style.CreateTodoForm>
     </Style.FormLayout>
   );
 }

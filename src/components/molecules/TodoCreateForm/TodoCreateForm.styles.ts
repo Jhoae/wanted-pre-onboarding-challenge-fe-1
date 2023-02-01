@@ -16,7 +16,7 @@ export const FormLayout = styled.div`
   }
 `;
 
-export const TodoCreateForm = styled.form`
+export const CreateTodoForm = styled.form`
   div {
     margin-top: 10px;
   }

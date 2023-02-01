@@ -1,5 +1,5 @@
 import React from 'react';
-import TodoColumn from '../../molecules/TodoColumn';
+import TodoColumn from '../TodoColumn';
 
 export interface IToDos {
   title: string;

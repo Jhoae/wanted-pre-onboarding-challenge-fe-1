@@ -35,3 +35,16 @@ export const DeleteButton = styled.button`
     color: red;
   }
 `;
+
+export const ModifyTodoButton = styled.button`
+  display: none;
+  padding: 0px 10px;
+  position: absolute;
+  right: 28%;
+  color: #adb5bd;
+  font-weight: bold;
+
+  &:hover {
+    color: #343a40;
+  }
+`;
