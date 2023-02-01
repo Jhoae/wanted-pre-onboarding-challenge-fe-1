@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import token from '../../../api/token';
 import { ACCESS_TOKEN_KEY } from '../../../constants/token/token.constant';
@@ -16,6 +16,13 @@ interface TodoColumnProps {
 
 export default function TodoColumn({ toDos, onFocusId }: TodoColumnProps) {
   const router = useRouter();
+
+  // Hydrate 오류관련 추가
+  const [domLoaded, setDomLoaded] = useState(false);
+
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
 
   const showTodoContent = (focusId: string) => {
     router.push(`/todo/${focusId}`);
@@ -36,19 +43,20 @@ export default function TodoColumn({ toDos, onFocusId }: TodoColumnProps) {
 
   return (
     <>
-      {toDos?.map((toDo) => (
-        <Style.TodoBox key={toDo.id} onClick={() => showTodoContent(toDo.id)}>
-          <Style.TitleHeader>
-            {toDo.title}
-            {onFocusId === toDo.id && (
-              <Style.DeleteButton type='button' onClick={() => DeleteTodo(toDo.id)}>
-                X
-              </Style.DeleteButton>
-            )}
-          </Style.TitleHeader>
-          {onFocusId === toDo.id && <ContentBox key={toDo.id} content={toDo.content} />}
-        </Style.TodoBox>
-      ))}
+      {domLoaded &&
+        toDos?.map((toDo) => (
+          <Style.TodoBox key={toDo.id} onClick={() => showTodoContent(toDo.id)}>
+            <Style.TitleHeader>
+              {toDo.title}
+              {onFocusId === toDo.id && (
+                <Style.DeleteButton type='button' onClick={() => DeleteTodo(toDo.id)}>
+                  X
+                </Style.DeleteButton>
+              )}
+            </Style.TitleHeader>
+            {onFocusId === toDo.id && <ContentBox key={toDo.id} content={toDo.content} />}
+          </Style.TodoBox>
+        ))}
     </>
   );
 }
