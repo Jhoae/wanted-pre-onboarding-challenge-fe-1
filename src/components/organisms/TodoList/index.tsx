@@ -11,7 +11,7 @@ export interface IToDos {
 
 export interface ITodoList {
   onFocusId?: string | string[] | undefined;
-  toDos: IToDos[];
+  toDos: IToDos[] | undefined;
 }
 
 export default function TodoList({ onFocusId, toDos }: ITodoList) {
