@@ -31,7 +31,7 @@ export default function validate(values: StringType): StringType {
   } else if (Object.keys(values).length > 2 && values.password !== values.passwordConfirmed) {
     errors.passwordConfirmed = '비밀번호가 일치하지 않습니다.';
   }
-  console.log('errors', errors);
+  //  console.log('errors', errors);
 
   return errors;
 }

@@ -1,12 +1,13 @@
+import React, { useEffect, useState } from 'react';
 import useForm from '../../../hooks/common/useForm';
 import InputFrame from '../../molecules/InputFrame/InputFrame';
 import CreateTodoValidate from '../../../utils/vaildate.ts/CreateTodoValidate';
 import * as Style from './TodoCreateForm.styles';
-import React, { useEffect } from 'react';
 import useCreateTodo from '../../../hooks/todo/useCreateTodo';
 import { useRecoilState } from 'recoil';
 import { IToDos } from '../../organisms/TodoList';
 import { toDoState } from '../../../recoil/atoms';
+import useGetTodos from '../../../hooks/todo/useGetTodos';
 
 interface TodoCreateFormProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -17,7 +18,7 @@ export default function TodoCreateForm({ setOpen }: TodoCreateFormProps) {
 
   const onSubmit = () => {
     setOpen(false);
-    useCreateTodo(values, setToDos);
+    const newTodo = useCreateTodo(values, setToDos);
   };
 
   const { values, errors, handleChange, handleSubmit, submitting } = useForm({
@@ -28,10 +29,6 @@ export default function TodoCreateForm({ setOpen }: TodoCreateFormProps) {
     onSubmit: onSubmit,
     validate: CreateTodoValidate,
   });
-
-  useEffect(() => {
-    //    useGetTodos(setToDos);
-  }, []);
 
   return (
     <Style.FormLayout>

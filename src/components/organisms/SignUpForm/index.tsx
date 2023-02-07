@@ -17,8 +17,6 @@ export default function SignUpForm() {
         password: values.password,
       })
       .then((response) => {
-        console.log('회원가입 성공');
-        console.log('response', response.data.token);
         token.setToken(ACCESS_TOKEN_KEY, response.data.token);
         router.push('/');
       })

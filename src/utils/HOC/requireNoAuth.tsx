@@ -1,9 +1,3 @@
-//import { redirect, useNavigate } from 'react-router-dom';
-//import { useAtomValue } from 'jotai';
-//import { Button } from '@mantine/core';
-//import { paths } from 'routes/paths';
-//import { isSignedIn } from 'utils';
-
 import { useRouter } from 'next/router';
 import { paths } from '../../constants/paths';
 import useTokenCheck from '../../hooks/auth/useTokenCheck';

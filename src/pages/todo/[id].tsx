@@ -9,7 +9,6 @@ import TodoList, { IToDos } from '../../components/organisms/TodoList';
 import useTokenCheck from '../../hooks/auth/useTokenCheck';
 import useGetTodos from '../../hooks/todo/useGetTodos';
 import { toDoState } from '../../recoil/atoms';
-import AuthHoc from '../../utils/HOC';
 import * as Style from '../index.styles';
 
 export function TodoDetailPage() {

@@ -9,6 +9,7 @@ import ContentBox from '../../atoms/ContentBox';
 import ModifyTodoForm from '../ModifyTodoForm';
 import { IToDos } from '../TodoList';
 import * as Style from './TodoColumn.styles';
+import deleteTodo from '../../../hooks/todo/deleteTodo';
 
 interface TodoColumnProps {
   toDos?: IToDos[];
@@ -18,31 +19,16 @@ interface TodoColumnProps {
 export default function TodoColumn({ toDos, onFocusId }: TodoColumnProps) {
   const router = useRouter();
 
-  // Hydrate 오류관련 추가 //
+  // Hydrate 오류관련 추가 ~ //
   const [domLoaded, setDomLoaded] = useState(false);
 
   useEffect(() => {
     setDomLoaded(true);
   }, []);
-
-  // Hydrate 오류관련 추가 //
+  // ~ Hydrate 오류관련 추가 //
 
   const showTodoContent = (focusId: string) => {
     router.push(`/todo/${focusId}`);
-  };
-
-  const deleteTodo = (deleteId: string) => {
-    axios
-      .delete(`http://localhost:8080/todos/${deleteId}`, {
-        headers: {
-          Authorization: token.getToken(ACCESS_TOKEN_KEY),
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        router.push('/');
-      })
-      .catch((err) => console.error(err));
   };
 
   const [modifyModal, setModifyModal] = useState(false);
@@ -67,7 +53,7 @@ export default function TodoColumn({ toDos, onFocusId }: TodoColumnProps) {
                     >
                       O
                     </Style.ModifyTodoButton>
-                    <Style.DeleteButton type='button' onClick={() => deleteTodo(toDo.id)}>
+                    <Style.DeleteButton type='button' onClick={() => deleteTodo(toDo.id, router)}>
                       X
                     </Style.DeleteButton>
                   </>

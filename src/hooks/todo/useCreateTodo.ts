@@ -1,19 +1,16 @@
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import token from '../../api/token';
 import { ACCESS_TOKEN_KEY } from '../../constants/token/token.constant';
-import Router, { useRouter } from 'next/router';
 import { StringType } from '../common/useForm';
-// import useGetTodos from './useGetTodos';
-import { SetterOrUpdater } from 'recoil';
 import { IToDos } from '../../recoil/atoms';
-import { useEffect, useState } from 'react';
+import useGetTodos from './useGetTodos';
+import { SetterOrUpdater } from 'recoil';
 
-export default function useCreateTodo(values: StringType) {
-  const [data, setData] = useState();
+function useCreateTodo(values: StringType, setToDos: SetterOrUpdater<IToDos[]>) {
+  //  const [data, setData] = useState<IToDos>();
+  let returnValue = {};
 
-  useEffect(() => {
-    
-  }, []);
   axios
     .post(
       'http://localhost:8080/todos',
@@ -28,13 +25,17 @@ export default function useCreateTodo(values: StringType) {
       },
     )
     .then((response) => {
-      //      alert('등록되었습니다');
-      //      const { data } = useGetTodos(setToDos);
-      //      window.location.reload();
-      // 이후에 새로고침대신, 상태관리 라이브러리를 이용해서 실시간 데이터를 변경.
+      console.log('response.data.data;', response.data.data);
+      returnValue = response.data.data;
+      alert('등록되었습니다.');
+      window.location.reload();
     })
     .catch((err) => {
       console.error('err', err);
-      alert('오류 : 할 일 등록에 실패했습니다.');
+      //      alert('오류 : 할 일 등록에 실패했습니다.');
     });
+
+  return returnValue;
 }
+
+export default useCreateTodo;

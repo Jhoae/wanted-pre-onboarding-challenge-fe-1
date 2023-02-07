@@ -19,7 +19,6 @@ export default function ModifyTodoForm({ setShowModal }: TodoCreateFormProps) {
   const [content, setContent] = useState('');
 
   useEffect(() => {
-    console.log(id);
     axios
       .get(`http://localhost:8080/todos/${id}`, {
         headers: {
@@ -49,6 +48,7 @@ export default function ModifyTodoForm({ setShowModal }: TodoCreateFormProps) {
       )
       .then((res) => {
         console.log(res);
+        alert('수정되었습니다.');
       })
       .catch((err) => {
         console.error('err', err);
@@ -59,6 +59,8 @@ export default function ModifyTodoForm({ setShowModal }: TodoCreateFormProps) {
   const onSubmit = () => {
     setShowModal(false);
     updateTodo(values, id);
+
+    window.location.reload();
   };
 
   const { values, errors, handleChange, handleSubmit, submitting } = useForm({

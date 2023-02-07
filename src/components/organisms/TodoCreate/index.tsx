@@ -1,14 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import useCreateTodo from '../../../hooks/todo/useCreateTodo';
 import TodoCreateForm from '../../molecules/TodoCreateForm';
 import * as Style from './TodoCreate.styles';
 
 function TodoCreate() {
   const [open, setOpen] = useState(false);
-
-  //  const dispatch = useTodoDispatch();
-  //  const nextId = useTodoNextId();
-
   const onToggle = () => setOpen((prev: any) => !prev);
 
   return (

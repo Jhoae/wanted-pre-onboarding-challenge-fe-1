@@ -15,7 +15,7 @@ export default function CreateTodoValidate(values: StringType): StringType {
     errors.content = '50글자 이내로 입력해주세요.';
   }
 
-  console.log('errors', errors);
+  //  console.log('errors', errors);
 
   return errors;
 }
