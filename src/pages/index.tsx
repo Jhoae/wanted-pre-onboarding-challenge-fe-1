@@ -1,5 +1,5 @@
 import useTokenCheck from '../hooks/auth/useTokenCheck';
-import AuthHoc from '../utils/HOC/AuthHoc';
+import { RequireAuth } from '../utils/HOC';
 import token from '../api/token';
 import { useRouter } from 'next/router';
 import * as Style from './index.styles';
@@ -14,29 +14,18 @@ import LogoutButton from '../components/atoms/LogoutButton';
 export default function Homepage() {
   const [toDos, setToDos] = useRecoilState<IToDos[]>(toDoState);
 
-  const { isAuthority } = useTokenCheck();
+  //  const { isAuthority } = useTokenCheck();
   //  const [toDos, setToDos] = useState<IToDos[]>([]);
-
-  const Home = () => {
-    return (
-      <>
-        {isAuthority ? (
-          <>
-            <Style.HomeColumn>
-              <LogoutButton />
-              <TodoList toDos={toDos} />
-              <TodoCreate />
-            </Style.HomeColumn>
-          </>
-        ) : null}
-      </>
-    );
-  };
-  const AuthHomepage = AuthHoc(Home);
 
   return (
     <>
-      <AuthHomepage />
+      <RequireAuth>
+        <Style.HomeColumn>
+          <LogoutButton />
+          <TodoList toDos={toDos} />
+          <TodoCreate />
+        </Style.HomeColumn>
+      </RequireAuth>
     </>
   );
 }

@@ -1,5 +1,5 @@
-import { ComponentType, useEffect } from 'react';
-import useTokenCheck from '../../../hooks/auth/useTokenCheck';
+/* import { ComponentType, useEffect } from 'react';
+import useTokenCheck from '../../hooks/auth/useTokenCheck';
 import { useRouter } from 'next/router';
 
 const AuthHoc = (AuthComponent: ComponentType) => {
@@ -22,3 +22,6 @@ const AuthHoc = (AuthComponent: ComponentType) => {
 };
 
 export default AuthHoc;
+ */
+export * from './requireAuth';
+export * from './requireNoAuth';

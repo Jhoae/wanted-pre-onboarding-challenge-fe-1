@@ -6,11 +6,14 @@ import { StringType } from '../common/useForm';
 // import useGetTodos from './useGetTodos';
 import { SetterOrUpdater } from 'recoil';
 import { IToDos } from '../../recoil/atoms';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function useCreateTodo(values: StringType, setToDos: SetterOrUpdater<IToDos[]>) {
+export default function useCreateTodo(values: StringType) {
   const [data, setData] = useState();
 
+  useEffect(() => {
+    
+  }, []);
   axios
     .post(
       'http://localhost:8080/todos',
