@@ -13,6 +13,6 @@ export interface IToDos {
 
 export const toDoState = atom({
   key: 'toDoList',
-  default: [{ title: '', content: '', id: '', createdAt: '', updatedAt: 'string' }],
+  default: [],
   effects_UNSTABLE: [persistAtom],
 });
