@@ -15,8 +15,8 @@ function Login() {
       <S.ContentBox>
         <S.Title>Login</S.Title>
         <S.InputLayout>
-          <S.InputFiled placeholder='e-mail' />
-          <S.InputFiled placeholder='password' />
+          <S.InputFiled placeholder='e-mail' type='email' spellCheck='false' />
+          <S.InputFiled placeholder='password' type='password' />
         </S.InputLayout>
         <S.Button1>Login</S.Button1>
         <S.Button2 onClick={goSignup}>Sign up?</S.Button2>

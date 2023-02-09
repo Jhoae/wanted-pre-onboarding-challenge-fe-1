@@ -16,11 +16,11 @@ function SignUp() {
         <S.Title>Sign Up</S.Title>
         <S.InputLayout>
           <S.ConfirmButton>confirm</S.ConfirmButton>
-          <S.InputFiled placeholder='e-mail' />
-          <S.InputFiled placeholder='password' />
-          <S.InputFiled placeholder='password-check' />
-          <S.InputTitle>how do we call you?</S.InputTitle>
-          <S.InputFiled placeholder='nickname' />
+          <S.InputFiled placeholder='e-mail' type='email' spellCheck='false' />
+          <S.InputFiled placeholder='password' type='password' />
+          <S.InputFiled placeholder='password-check' type='password' />
+          <S.InputTitle htmlFor='nickname'>how do we call you?</S.InputTitle>
+          <S.InputFiled id='nickname' placeholder='nickname' type='text' />
         </S.InputLayout>
         <S.Button1>Sign up</S.Button1>
       </S.ContentBox>
