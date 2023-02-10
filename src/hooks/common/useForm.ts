@@ -62,6 +62,9 @@ function useForm({ initialValues, onSubmit, validate }: IFormProps): IFormReturn
         onSubmit(values);
       } else {
         //      console.log('에러 발견');
+        //        console.log(errors);
+        alert(JSON.stringify(errors));
+        console.log('no useEffect');
       }
     }
   }, [submitting, errors]);

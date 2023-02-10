@@ -59,6 +59,11 @@ export const ContentBox = styled.div`
   justify-content: center;
   align-items: center;
   width: 333px;
+
+  > button {
+    // Button1
+    margin-left: 10px;
+  }
 `;
 
 export const Title = styled.header`
@@ -74,6 +79,8 @@ export const Title = styled.header`
 export const InputLayout = styled.div`
   width: 333px;
 `;
+
+export const Form = styled.form``;
 
 export const InputFiled = styled.input`
   //  display: flex;
@@ -113,7 +120,6 @@ export const Button1 = styled.button`
   height: 63px;
   background-color: #d9d9d9;
   margin-bottom: 34px;
-  margin-left: 10px;
   &:hover {
     filter: brightness(0.9);
   }
@@ -126,7 +132,8 @@ export const Button2 = styled.button`
   height: 29px;
   white-space: nowrap;
   &:hover {
-    font-weight: 600;
+    //    font-weight: 600;
+    color: blue;
   }
   //  background-color: #d9d9d9;
 `;
