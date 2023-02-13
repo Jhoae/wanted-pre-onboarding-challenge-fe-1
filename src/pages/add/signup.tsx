@@ -50,22 +50,32 @@ function SignUp() {
       <>
         <Navbar />
         <S.ContentBox>
-          <S.Title>Sign Up</S.Title>
+          <S.Title>회원가입</S.Title>
           <S.Form onSubmit={handleSubmit}>
             <S.InputLayout>
               <S.ConfirmButton type='button' onClick={checkEmail}>
-                confirm
+                확인
               </S.ConfirmButton>
               <S.InputFiled
-                placeholder='e-mail'
-                type='email'
+                placeholder='이메일 입력'
+                type='text'
                 spellCheck='false'
                 name='email'
                 onChange={handleChange}
                 //                errorMessage={errors.email}
               />
+              <S.InputTitle htmlFor='nickname'>닉네임을 정해주세요</S.InputTitle>
               <S.InputFiled
-                placeholder='password'
+                id='nickname'
+                placeholder='닉네임 입력'
+                type='text'
+                value={values.nickname}
+                onChange={handleChange}
+                name='nickname'
+                //                errorMessage={errors.nickname}
+              />
+              <S.InputFiled
+                placeholder='비밀번호 입력'
                 type='password'
                 value={values.password}
                 onChange={handleChange}
@@ -73,26 +83,16 @@ function SignUp() {
                 //                errorMessage={errors.password}
               />
               <S.InputFiled
-                placeholder='password-check'
+                placeholder='비밀번호 확인'
                 type='password'
                 value={values.passwordConfirmed}
                 onChange={handleChange}
                 name='passwordConfirmed'
                 //                errorMessage={errors.passwordConfirmed}
               />
-              <S.InputTitle htmlFor='nickname'>how do we call you?</S.InputTitle>
-              <S.InputFiled
-                id='nickname'
-                placeholder='nickname'
-                type='text'
-                value={values.nickname}
-                onChange={handleChange}
-                name='nickname'
-                //                errorMessage={errors.nickname}
-              />
             </S.InputLayout>
             <S.Button1 type='submit' disabled={submitting}>
-              Sign up
+              회원가입 하기
             </S.Button1>
           </S.Form>
         </S.ContentBox>

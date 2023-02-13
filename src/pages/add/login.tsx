@@ -46,12 +46,12 @@ function Login() {
       <>
         <Navbar />
         <S.ContentBox>
-          <S.Title>Login</S.Title>
+          <S.Title>로그인</S.Title>
           <S.Form onSubmit={handleSubmit}>
             <S.InputLayout>
               <S.InputFiled
-                placeholder='e-mail'
-                type='email'
+                placeholder='이메일'
+                type='text'
                 name='email'
                 spellCheck='false'
                 value={values.email}
@@ -59,7 +59,7 @@ function Login() {
                 //                errorMessage={errors.email}
               />
               <S.InputFiled
-                placeholder='password'
+                placeholder='비밀번호'
                 type='password'
                 value={values.password}
                 onChange={handleChange}
@@ -68,11 +68,11 @@ function Login() {
               />
             </S.InputLayout>
             <S.Button1 type='submit' disabled={submitting}>
-              Login
+              로그인 하기
             </S.Button1>
           </S.Form>
           <S.Button2 type='button' onClick={goSignup}>
-            Sign up?
+            회원가입
           </S.Button2>
         </S.ContentBox>
       </>

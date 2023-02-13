@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+// import styled from 'styled-components';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
 export const Navbar = styled.div`
   //  background-color: black;
@@ -12,12 +14,12 @@ export const Navbar = styled.div`
   //  top: 0;
   height: 50px;
 `;
-export const GrayBar = styled.div`
+/* export const GrayBar = styled.div`
   width: 100%;
   background-color: #d9d9d9;
   height: 40px;
 `;
-
+ */
 export const BackButton = styled.button`
   //  font-size: 100%;
   font-size: 40px;
@@ -31,9 +33,23 @@ export const BackIcon = styled.img`
 `;
 
 export const LogoBox = styled.div`
-  width: 68px;
+  /* width: 68px;
   height: 29px;
-  font-size: 30px;
+  font-size: 30px; */
+
+  width: 56px;
+  height: 29px;
+  left: 167px;
+  top: 60px;
+
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 29px;
+  /* identical to box height */
+
+  color: #000000;
 `;
 export const Profile = styled.div`
   img {
@@ -68,12 +84,19 @@ export const ContentBox = styled.div`
 
 export const Title = styled.header`
   white-space: nowrap;
-  width: 134px;
-  height: 44px;
-  font-size: 40px;
-  justify-self: center;
-  margin-bottom: 14px;
+  width: 67px;
+  height: 35px;
+
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 35px;
   text-align: center;
+  margin-bottom: 65px;
+
+  justify-self: center;
+  padding-right: 25px;
 `;
 
 export const InputLayout = styled.div`
@@ -84,41 +107,93 @@ export const Form = styled.form``;
 
 export const InputFiled = styled.input`
   //  display: flex;
-  width: 233px;
-  height: 44px;
-  margin-bottom: 17px;
-  padding-left: 10px;
+  /*  width: 210px;
+  height: 48px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0, 137, 123, 0.1);
+  border-radius: 2px;
+  
+  padding-left: 16px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 29px; */
+  // color: #505050;
   padding-right: 100px;
-  border: none;
-  font-size: 17px;
-  background: #e3e1e1;
+  width: 320px;
+  height: 48px;
+  border: 1px solid rgba(0, 137, 123, 0.1);
+  margin-bottom: 20px;
+  border-radius: 2px;
+
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 29px;
+  padding-left: 16px;
+  box-sizing: border-box;
+
   &::placeholder {
+    /*  padding-left: 16px;
+    font-weight: 400;
     font-size: 20px;
-    padding-left: 20px;
-    font-weight: bold;
+    line-height: 29px;
+    color: #505050; */
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 29px;
+    //    padding-left: 16px;
+    box-sizing: border-box;
   }
   &:focus::placeholder {
     color: transparent;
+    box-sizing: border-box;
+    /*
+    padding-left: 16px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 29px;
+    //    color: #505050; */
+  }
+  &:focus {
+    /* padding-left: 16px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 29px;
+    //    color: #505050; */
   }
 `;
 
 export const InputTitle = styled.label`
+  box-sizing: border-box;
   margin-left: 15px;
-  width: 153px;
+  margin-bottom: 10px;
+
+  width: 120px;
+  height: 17px;
+
+  font-family: 'Inter';
+  font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #505050;
   &:hover {
     cursor: pointer;
   }
 `;
 
 export const Button1 = styled.button`
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  color: #ffffff;
+  border: 1px solid #00897b1a;
+  border-radius: 8px;
   font-size: 24px;
   font-weight: 400;
-  width: 345px;
-  height: 63px;
-  background-color: #d9d9d9;
+  width: 320px;
+  height: 48px;
+  background-color: #004d40;
+  margin-top: 20px;
   margin-bottom: 34px;
   &:hover {
     filter: brightness(0.9);
@@ -128,24 +203,43 @@ export const Button1 = styled.button`
 export const Button2 = styled.button`
   font-size: 24px;
   font-weight: 400;
-  width: 95px;
-  height: 29px;
+  width: 59px;
+  height: 19px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  text-decoration-line: underline;
+
+  color: #191919;
   white-space: nowrap;
   &:hover {
     //    font-weight: 600;
-    color: blue;
+    font-weight: 600;
   }
   //  background-color: #d9d9d9;
 `;
 
 export const ConfirmButton = styled.button`
   position: relative;
-  width: 74px;
-  height: 35px;
-  background-color: #c2c0c0;
+  top: 42px;
+  left: 250px;
 
-  top: 40px;
-  left: 260px;
+  width: 64px;
+  height: 36px;
+  background: #004d40;
+  border-radius: 8px;
+
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 29px;
+
+  color: #ffffff;
+
   &:hover {
     filter: brightness(0.9);
   }

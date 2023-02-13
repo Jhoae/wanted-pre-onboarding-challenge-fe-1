@@ -9,7 +9,9 @@ function Navbar() {
 
   return (
     <>
+      {/*  
       <S.GrayBar />
+*/}
       <S.Navbar>
         <S.BackButton onClick={goLogin}>
           <S.BackIcon src='https://cdn.icon-icons.com/icons2/1369/PNG/512/-navigate-before_90417.png' />
